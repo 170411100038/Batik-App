@@ -1,0 +1,85 @@
+{% extends "main.html" %}
+{% block content %}
+
+<h4 class="text-center">Pra Proses Data</h4>
+
+<div class="table-responsive">
+    <h5>Data sebelum pra proses</h5>
+    <table id="data-awal" class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">No</th>
+                {% for i in nama_kolom %}
+                    <th scope="col"> {{i}} </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(nama_kolom|length) %}
+                    <td>
+                        {{ file_data[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="mt-5">Data setelah imputasi</h5>
+    <table id="data-imputer" class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">No</th>
+                {% for i in nama_kolom_imputasi %}
+                    <th scope="col"> {{i}} </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(nama_kolom_imputasi|length) %}
+                    <td>
+                        {{ file_data_imputer[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="mt-5">Data setelah seleksi fitur</h5>
+    <table id="data-diskrit" class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">No</th>
+                {% for i in nama_kolom_seleksi %}
+                    <th scope="col"> {{i}} </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(nama_kolom_seleksi|length) %}
+                    <td>
+                        {{ file_data_seleksi[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

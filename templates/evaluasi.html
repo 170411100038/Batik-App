@@ -1,0 +1,180 @@
+{% extends "main.html" %}
+{% block content %}
+<h4 class="text-center">Hasil Evaluasi</h4><br>
+
+<h5>ID3 Bagging dengan Imputasi KNN dan seleksi fitur Information Gain</h5>
+<p class="text-justify">Di bawah ini adalah hasil rata-rata dari pengujian metode ID3 Bagging menggunakan 5 fold cross validation
+</p>
+<div class="table-responsive">
+    <table class="table table-borderless table-sm" cellspacing="0">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">Fold</th>
+                {% for i in range(k) %}
+                    <th scope="col">{{"k:" + (i+2)|string}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(k) %}
+                    <td scope="row" class="text-center">
+                        {{ data_id3_knn[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <th>Rata-Rata</th>
+                {% for k in rat_akurasi_id3_knn %}
+                    <td scope="row" class="text-center">{{ k }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p class="text-justify">Dari tabel diatas dapat diketahui bahwa akurasi tertinggi metode ID3 Bagging dengan imputasi KNN kebanyakan berada pada fold ke-2 dan fold ke-4 yaitu sebesar 97,37%.</p>
+<hr>
+
+<h5>ID3 Bagging dengan Imputasi Modus dan seleksi fitur Information Gain</h5>
+<p class="text-justify">Di bawah ini adalah hasil rata-rata dari pengujian metode ID3 Bagging menggunakan 5 fold cross validation. 
+</p>
+<div class="table-responsive">
+    <table class="table table-borderless table-sm" cellspacing="0">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">Fold</th>
+                {% for i in range(k) %}
+                    <th scope="col">{{"k:" + (i+2)|string}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(k) %}
+                    <td scope="row" class="text-center">
+                        {{ data_id3_modus[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <th>Rata-Rata</th>
+                {% for k in rat_akurasi_id3_modus %}
+                    <td scope="row" class="text-center">{{ k }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p class="text-justify">Dari tabel diatas dapat diketahui bahwa akurasi tertinggi metode ID3 Bagging dengan imputasi modus kebanyakan berada pada fold ke-2 dan fold ke-4 yaitu sebesar 97,37%.</p>
+<hr>
+
+<h5>C45 Bagging dengan Imputasi Modus dan seleksi fitur Information Gain</h5>
+<p class="text-justify">Di bawah ini adalah hasil rata-rata dari pengujian metode ID3 Bagging menggunakan 5 fold cross validation. 
+</p>
+<div class="table-responsive">
+    <table class="table table-borderless table-sm" cellspacing="0">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">Fold</th>
+                {% for i in range(k) %}
+                    <th scope="col">{{"k:" + (i+2)|string}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(k) %}
+                    <td scope="row" class="text-center">
+                        {{ data_c45_modus[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <th>Rata-Rata</th>
+                {% for k in rat_akurasi_c45_modus %}
+                    <td scope="row" class="text-center">{{ k }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p class="text-justify">Dari tabel diatas dapat diketahui bahwa akurasi tertinggi metode C45 Bagging dengan imputasi modus kebanyakan berada pada fold ke-2 dan fold ke-4 yaitu sebesar 97,37%.</p>
+<hr>
+
+<h5>C45 Bagging dengan Imputasi KNN dan seleksi fitur Information Gain</h5>
+<p class="text-justify">Di bawah ini adalah hasil rata-rata dari pengujian metode ID3 Bagging menggunakan 5 fold cross validation. 
+</p>
+<div class="table-responsive">
+    <table class="table table-borderless table-sm" cellspacing="0">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">Fold</th>
+                {% for i in range(k) %}
+                    <th scope="col">{{"k:" + (i+2)|string}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(k) %}
+                    <td scope="row" class="text-center">
+                        {{ data_c45_knn[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <th>Rata-Rata</th>
+                {% for k in rat_akurasi_c45_knn %}
+                    <td scope="row" class="text-center">{{ k }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p class="text-justify">Dari tabel diatas dapat diketahui bahwa akurasi tertinggi metode C45 Bagging dengan imputasi KNN kebanyakan berada pada fold ke-2 dan fold ke-4 yaitu sebesar 97,37%.</p>
+<hr>
+
+<h5>Perbandingan Akurasi Metode ID3 Bagging dan C45 Bagging dengan Imputasi Modus dan KNN</h5>
+<p class="text-justify text-indent">Di bawah ini adalah hasil rata-rata dari pengujian ID3 Bagging menggunakan 5 fold cross validation pada setiap k-bootstrap. Menghasilkan perbandingan
+    akurasi berdasarkan jumlah k-bootstrap yang digunakan.
+</p>
+<div class="table-responsive">
+    <table class="table table-sm table-borderless">
+        <tr>
+            <th class="table-success">Tabel Perbandingan</th>
+        </tr>
+        <tr>
+            <td><br>
+                <img src="{{ url_for('static', filename='Perbandingan.png') }}" alt="Perbandingan" class="img-fluid mx-auto d-block">
+                <ol><br>
+                    <li>Grafik di atas merupakan hasil pengujian menggunakan imputasi KNN dan imputasi modus pada metode ID3 Bagging dan C45 Bagging.</li>
+                    <li>Hasil klasifikasi  menggunakan metode ID3 menggunakan imputasi Modus menghasilkan akurasi tertinggi sebesar 95,84% dan akurasi terendah sebesar 93,2%.</li>
+                    <li>Hasil klasifikasi  menggunakan metode ID3 menggunakan imputasi KNN menghasilkan akurasi tertinggi sebesar 95,84% dan akurasi terendah sebesar 94,79%.</li>
+                    <li>Hasil klasifikasi  menggunakan metode C45 menggunakan imputasi Modus menghasilkan akurasi tertinggi sebesar 95,84% dan akurasi terendah sebesar 94,3%.</li>
+                    <li>Hasil klasifikasi  menggunakan metode C45 menggunakan imputasi KNN menghasilkan akurasi tertinggi sebesar 95,84% dan akurasi terendah sebesar 90,69%.</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
