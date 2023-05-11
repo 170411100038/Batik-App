@@ -1,0 +1,96 @@
+{% extends "main.html" %}
+{% block content %}
+<!-- Pregnancies Glucose BloodPressure SkinThickness Insulin BMI DiabetesPedigreeFunction Age Outcome -->
+<h4 class="text-center">Uji Data</h4><br>
+<form action="#" method="POST">
+    <label for="Jumlah karyawan" class="form-label">Jumlah karyawan :</label>
+    <select class="form-select" id="Jumlah karyawan" name="Jumlah karyawan">
+        <option value="1"><=50</option>
+        <option value="2">50-149</option>
+        <option value="3">150-199</option>
+        <option value="4">>=200</option>
+    </select>
+    <label for="Fasilitas pembayaran online" class="form-label">Fasilitas pembayaran online :</label>
+    <select class="form-select" id="Fasilitas pembayaran online" name="Fasilitas pembayaran online">
+        <option value="1">Tidak</option>
+        <option value="2">1</option>
+        <option value="3">2</option>
+        <option value="4">3</option>
+    </select>
+    <label for="Memiliki surat ijin usaha" class="form-label">Memiliki surat ijin usaha :</label>
+    <select class="form-select" id="Memiliki surat ijin usaha" name="Memiliki surat ijin usaha">
+        <option value="1">Tidak memiliki</option>
+        <option value="2">Ditolak</option>
+        <option value="3">Proses pengurusan</option>
+        <option value="4">SIUP</option>
+    </select>
+    <label for="Pegawai bersertifikat IT" class="form-label">Pegawai bersertifikat IT :</label>
+    <select class="form-select" id="Pegawai bersertifikat IT" name="Pegawai bersertifikat IT">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">>=3</option>
+        <option value="4">Tidak ada</option>
+    </select>
+    <label for="SI pengelolaan batik sendiri" class="form-label">SI pengelolaan batik sendiri :</label>
+    <select class="form-select" id="SI pengelolaan batik sendiri" name="SI pengelolaan batik sendiri">
+        <option value="1">Tidak ada</option>
+        <option value="2">Ada tapi tidak digunakan</option>
+        <option value="3">Peroses pembuatan</option>
+        <option value="4">Terdapat E-Commerce yang digunakan</option>
+    </select>
+    <label for="Terdapat branding produk" class="form-label">Terdapat branding produk :</label>
+    <select class="form-select" id="Terdapat branding produk" name="Terdapat branding produk">
+        <option value="1">Dalam pengurusan</option>
+        <option value="2">Terdaftar</option>
+        <option value="3">Terdapat merk</option>
+        <option value="4">Tidak bermerk</option>
+    </select>
+    <label for="Mempunyai marketplace" class="form-label">Mempunyai marketplace :</label>
+    <select class="form-select" id="Mempunyai marketplace" name="Mempunyai marketplace">
+        <option value="1">Tidak ada</option>
+        <option value="2">1</option>
+        <option value="3">2</option>
+        <option value="4">>=3</option>
+    </select>
+    <label for="Aturan pembelian batik offline" class="form-label">Aturan pembelian batik offline :</label>
+    <select class="form-select" id="Aturan pembelian batik offline" name="Aturan pembelian batik offline">
+        <option value="1">Tidak ada aturan</option>
+        <option value="2">Membatasi waktu berkunjung</option>
+        <option value="3">Tidak berkerumun, Membatasi waktu berkunjung</option>
+        <option value="4">Menerapkan metode jaga jarak minimal 1 meter</option>
+    </select>
+    <label for="Fasilitas pencegahan covid-19" class="form-label">Fasilitas pencegahan covid-19 :</label>
+    <select class="form-select" id="Fasilitas pencegahan covid-19" name="Fasilitas pencegahan covid-19">
+        <option value="1">Tempat cuci tangan dan sabun depan toko</option>
+        <option value="2">Menyediakan handsanitizer</option>
+        <option value="3">Alat pengecekan suhu & menyediakan handsenitizer</option>
+        <option value="4">Tempat cuci tangan dan sabun depan toko & menyediakan handsenitizer</option>
+    </select>
+    <label for="Kerjasama dengan mitra" class="form-label">Kerjasama dengan mitra :</label>
+    <select class="form-select" id="Kerjasama dengan mitra" name="Kerjasama dengan mitra">
+        <option value="1">>=5</option>
+        <option value="2">3-4</option>
+        <option value="3">1-2</option>
+        <option value="4">0</option>
+    </select>
+    <div class=" text-center mt-3">
+        <button type="submit" value="submit" class=" btn btn-hover">SUBMIT</button>
+    </div>
+</form>
+<div class="table-responsive mt-3">
+    <table class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">Hasil Prediksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    {{ hasil_input }}
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

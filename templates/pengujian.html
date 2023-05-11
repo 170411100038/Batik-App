@@ -1,0 +1,110 @@
+{% extends "main.html" %}
+{% block content %}
+<h4 class="text-center">Pengujian</h4>
+
+<div class="table-responsive">
+    <h5 class="mt-2">Data setelah Pra Proses</h5>
+    <table id="data-diskrit" class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">No</th>
+                {% for i in nama_kolom_seleksi %}
+                    <th scope="col"> {{i}} </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(nama_kolom_seleksi|length) %}
+                    <td>
+                        {{ file_data_seleksi[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="mt-5">Data Training</h5>
+    <table id="data-train" class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">No</th>
+                {% for i in nama_kolom_seleksi %}
+                    <th scope="col"> {{i}} </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah_train %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(nama_kolom_seleksi|length) %}
+                    <td>
+                        {{ data_train[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="mt-5">Data Testing</h5>
+    <p>Data dibawah merupakan data yang digunakan untuk melakukan pengujian terhadap tree yang telah dibuat menggunakan data training diatas. 
+        Data dibawah menampilkan outcome(diagnosa) aktual dan outcome hasil prediksi.</p>
+    <table id="data-test" class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">No</th>
+                {% for i in nama_kolom_seleksi %}
+                    <th scope="col"> {{i}} </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in jumlah_test %}
+            <tr>
+                <th scope="row">
+                    {{ i+1 }}
+                </th>
+                {% for j in range(nama_kolom_seleksi|length) %}
+                    <td>
+                        {{ data_train[j][i] }}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="mt-2">Hasil Pengujian</h5>
+    <table id="data-train" class="table table-hover table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+            <tr class="table-success">
+                <th scope="col">Akurasi</th>
+                <th scope="col">Presisi</th>
+                <th scope="col">Recall</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">
+                    {{ akurasi }}
+                </td>
+                <td class="text-center">
+                    {{ presisi }}
+                </td>
+                <td class="text-center">
+                    {{ recall }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

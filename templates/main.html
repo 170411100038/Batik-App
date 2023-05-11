@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <title>UMKM Batik</title>
+</head>
+
+<body>
+    <!-- NAVIGATION BAR-->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-scroll shadow-0" style="background-color: #56ab91;">
+            <div class="container">
+                <a class="navbar-brand brand-hover px-4" href="{{ url_for('index') }}">UMKM Batik</a>
+                <button class="navbar-toggler ps-0" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarku" aria-controls="navbarku" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="d-flex justify-content-start align-items-center" style="margin: auto;">
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarku">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link px-2" href="{{ url_for('index') }}">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2" href="{{ url_for('praproses') }}">Praproses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2" href="{{ url_for('pengujian') }}">Pengujian</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2" href="{{ url_for('uji') }}">Uji</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2" href="{{ url_for('evaluasi') }}">Evaluasi</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container-xl">
+        <div class="row">
+            <div class="col-">
+                <!-- FLASH -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}"> {{ message }} </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+    <div class="my-5">
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: #56ab91">
+            <!-- Grid container -->
+            <div class="container">
+                <!-- Section: Links -->
+                <section class="mt-5">
+                    <!-- Grid row-->
+                    <div class="row text-center d-flex justify-content-center pt-5" data-aos="fade-up" data-aos-duration="1000">
+                        <!-- Grid column -->
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="{{ url_for('index') }}" class="text-white text-decoration-none">Beranda</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="{{ url_for('praproses') }}"
+                                    class="text-white text-decoration-none">Praproses</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="{{ url_for('pengujian') }}"
+                                    class="text-white text-decoration-none">Pengujian</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="{{ url_for('uji') }}"
+                                    class="text-white text-decoration-none">Uji</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="{{ url_for('evaluasi') }}" class="text-white text-decoration-none">Evaluasi</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row-->
+                </section>
+                <!-- Section: Links -->
+
+                <hr class="my-4" />
+
+                <!-- Section: Text -->
+                <section>
+                    <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="col-lg-8">
+                            <p>
+                                UMKM Batik
+                                <br> Dr. Yeni Kustiyahningsih, S. Kom., M. Kom
+                            </p>
+                            <!-- Section: Social -->
+                            <section class="text-center" data-aos="fade-up" data-aos-duration="2000">
+                                <a href="#" class="text-white me-4"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="text-white me-4"><i class="fa fa-linkedin"></i></a>
+                                <a href="#" class="text-white me-4"><i class="fa fa-github"></i></a>
+                            </section>
+                            <!-- Section: Social -->
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Text -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- <div class="custom-shape-divider-bottom-1666875587">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                </svg>
+            </div> -->
+
+            <!-- Copyright -->
+            <div class="text-center p-2 mt-3" style="background-color: #58a890(); color: white">
+                © 2023 Copyright : Dr. Yeni Kustiyahningsih, S. Kom., M. Kom
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
+    <!-- End of .container -->
+
+    <!-- <script>
+        AOS.init();
+    </script> -->
+    <!-- JS for table -->
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#data-awal').DataTable();
+        });
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#data-imputer').DataTable();
+        });
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#data-diskrit').DataTable();
+        });
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#data-test').DataTable();
+        });
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#data-train').DataTable();
+        });
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#pengujian').DataTable();
+        });
+    </script>
+</body>
+
+</html>
