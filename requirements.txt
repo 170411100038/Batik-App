@@ -14,4 +14,7 @@ six==1.16.0
 tzdata==2023.3
 Werkzeug==2.3.0
 WTForms==3.0.1
+<<<<<<< HEAD
 gunicorn==20.1.0
+=======
+>>>>>>> fa971718c18388bc8a2071110f3933a769b6af9e
