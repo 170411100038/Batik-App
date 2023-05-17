@@ -193,9 +193,9 @@ def evaluasi():
     
     return render_template("evaluasi.html",k=k,data_c45_knn=data_c45_knn, data_c45_modus=data_c45_modus, data_id3_knn=data_id3_knn, data_id3_modus=data_id3_modus, rat_akurasi_id3_knn=rat_akurasi_id3_knn, rat_akurasi_id3_modus=rat_akurasi_id3_modus, rat_akurasi_c45_knn=rat_akurasi_c45_knn, rat_akurasi_c45_modus=rat_akurasi_c45_modus, jumlah=jumlah)
 
-@app.route("/about")
-def redirect_about():
-    return "Aboutt"
+# @app.route("/about")
+# def redirect_about():
+#     return "Aboutt"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
