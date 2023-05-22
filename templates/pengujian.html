@@ -6,7 +6,7 @@
     <h5 class="mt-2">Data setelah Pra Proses</h5>
     <table id="data-diskrit" class="table table-hover table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
-            <tr class="table-success">
+            <tr class="table-danger">
                 <th scope="col">No</th>
                 {% for i in nama_kolom_seleksi %}
                     <th scope="col"> {{i}} </th>
@@ -32,7 +32,7 @@
     <h5 class="mt-5">Data Training</h5>
     <table id="data-train" class="table table-hover table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
-            <tr class="table-success">
+            <tr class="table-danger">
                 <th scope="col">No</th>
                 {% for i in nama_kolom_seleksi %}
                     <th scope="col"> {{i}} </th>
@@ -60,7 +60,7 @@
         Data dibawah menampilkan outcome(diagnosa) aktual dan outcome hasil prediksi.</p>
     <table id="data-test" class="table table-hover table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
-            <tr class="table-success">
+            <tr class="table-danger">
                 <th scope="col">No</th>
                 {% for i in nama_kolom_seleksi %}
                     <th scope="col"> {{i}} </th>
@@ -83,7 +83,7 @@
         </tbody>
     </table>
 
-    <h5 class="mt-2">Hasil Pengujian</h5>
+    <!-- <h5 class="mt-2">Hasil Pengujian</h5>
     <table id="data-train" class="table table-hover table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
             <tr class="table-success">
@@ -105,6 +105,6 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 </div>
 {% endblock %}

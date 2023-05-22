@@ -1,179 +1,54 @@
 {% extends "main.html" %}
 {% block content %}
 <h4 class="text-center">
-    KLASIFIKASI KINERJA UMKM MENGGUNAKAN METODE DECISION TREE UNTUK PENINGKATAN PRODUKSTIVITAS BATIK MADURA
-</h4>
+    <strong>KLASIFIKASI KINERJA UMKM MENGGUNAKAN METODE DECISION TREE UNTUK PENINGKATAN PRODUKSTIVITAS BATIK MADURA</strong>
+</h4><br>
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+        <!-- <div class="numbertext">1 / 3</div> -->
+        <img src="{{ url_for('static', filename='1.jpeg') }}" style="width:100%">
+        <div class="text">Caption One</div>
+    </div>
+
+    <div class="mySlides fade">
+        <!-- <div class="numbertext">2 / 3</div> -->
+        <img src="{{ url_for('static', filename='2.jpeg') }}" style="width:100%">
+        <div class="text">Caption Two</div>
+    </div>
+
+    <div class="mySlides fade">
+        <!-- <div class="numbertext">3 / 3</div> -->
+        <img src="{{ url_for('static', filename='3.jpeg') }}" style="width:100%">
+        <div class="text">Caption Three</div>
+    </div>
+
+    <div class="mySlides fade">
+        <!-- <div class="numbertext">3 / 3</div> -->
+        <img src="{{ url_for('static', filename='4.jpeg') }}" style="width:100%">
+        <div class="text">Caption Foue</div>
+    </div>
+
+    <div class="mySlides fade">
+        <!-- <div class="numbertext">3 / 3</div> -->
+        <img src="{{ url_for('static', filename='5.jpeg') }}" style="width:100%">
+        <div class="text">Caption Five</div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+</div>
 <hr class="my-3" />
-<!-- <table class="table table-striped">
-    <tr>
-        <th>
-            <h5 class="alg-left">Latar Belakang</h5>
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p class="text-justify text-indent">Penerapan teknologi informasi telah memasuki berbagai bidang khususnya bidang kesehatan. 
-                Teknologi data mining dapat dimanfaatkan untuk memprediksi penyakit diantaranya adalah diabetes. 
-                Model dari data mining diantaranya adalah klasifikasi. Di bidang klasifikasi terdapat banyak cabang 
-                yang berkembang salah satunya adalah decision tree. Algoritma tree yang digunakan pada penelitian ini adalah ID3.  
-                Akurasi sangatlah penting dalam klasifikasi. Metode ensemble adalah metode yang digunakan untuk meningkatkan akurasi 
-                algoritma klasifikasi. Selain itu data juga memiliki pengaruh besar terhadap performa system. Semakin bagus data 
-                yang digunakan makan semakin bagus juga system yang dihasilkan.
-            </p>
-            <p class="text-justify text-indent">
-                Penelitian kali ini menggunakan data dari PIDD (Pima Indian Diabetes) yang didapatkan dari kaggle UCI Repository. 
-                Data ini sudah banyak digunakan pada penelitian sebelumnya untuk tujuan menguji sebuah algoritma klasifikasi 
-                    <sup><a href="https://ojs.unud.ac.id/index.php/lontar/article/view/32405" class="text-decoration-none">[1]</a></sup>
-                    <sup><a href="https://ejournal.akprind.ac.id/index.php/snast/article/view/3340" class="text-decoration-none">[2]</a></sup>. 
-                Dengan alasan tersebut maka saya menggunakan dataset ini dalam penelitian sekarang. 
-                Dataset tersebut bertipe data kontinu dan juga terdapat berapa missing value. 
-                Oleh karena itu sebelum membentuk sistem data harus dilakukan pre-procesing terlebih dahulu. 
-                Untuk mengatasi missing value tersebut menggunakan imputasi dan dilakukan diskritisasi untuk mengatasi data kontinu. 
-                Missing value adalah suatu informasi yang tidak tersedia dalam suatu data. Missing value dapat mempengaruhi hasil 
-                penelitian karena dapat mempengaruhi kinerja dan akurasi dari sistem. Untuk mengatasi missing value terdapat 3 metode 
-                yaitu Litwise deletion, Pairwise deletion, dan imputasi. Litwise deletion mengatasi missing value dengan cara 
-                menghilangkan observasi yang mengandung missing value. Pairwise deletion mengatasi missing value dengan cara 
-                menghapus data yang mengandung missing value. Sedangkan imputasi mengatasi missing value dengan cara mengisi 
-                data kosong berdasarkan data yang telah diketahui. Penggunaan Litwise deletion dan Pairwise deletion kurang 
-                efektif untuk digunakan karena dapat menghilangkan informasi penting dari data sehingga dalam penelitian ini 
-                digunakan metode imputasi untuk mengatasi missing value. Imputasi terbagi menjadi beberapa jenis misalkan mean, 
-                median, dan KNN. Dalam penelitian ini menggunakan imputasi KNN sebagai metode untuk mengatasi missing value
-                    <sup><a href="https://jurnal.untan.ac.id/index.php/jbmstr/article/view/23498" class="text-decoration-none">[3]</a></sup>. 
-                Diskritisasi merupakan sebuah metode untuk mengkonversi data kontinu menjadi data diskrit dengan membaginya 
-                kedalam kategori tertentu. Diskritisasi mampu menurunkan penggunaan memori sistem dan meningkatkan efisiensi 
-                algoritma. Selain itu metode diskritisasi juga dapat membuat data lebih ringkas dan mudah dipahami
-                    <sup><a href="https://ojs.unud.ac.id/index.php/lontar/article/view/32405" class="text-decoration-none">[1]</a></sup>
-                    <sup><a href="https://ejournal.akprind.ac.id/index.php/snast/article/view/3340" class="text-decoration-none">[2]</a></sup>. 
-            </p>
-            <p class="text-justify text-indent">
-                Penelitian sebelumnya menggunakan metode C4.5 dan Ensemble Bagging pada data pima Indian 
-                diabetes menghasilkan akurasi yang cukup tinggi yaitu 74,87%. Penelitian kali ini akan mencoba menggunakan 
-                metode ID3 dan Bagging untuk membangun sistem pada penyakit diabetes. Penggunaan ID3 didasari pada penelitian 
-                sebelumnya yang menggunakan metode C4.5 Bagging sehingga timbul rasa keingintahuan apakah bagging juga akan 
-                berpengaruh kepada algoritma ID3.  Perbedaan metode C45 dan ID3 terdapat pada saat menentukan root node. 
-                Metode ID3 menggunakan nilai Information Gain untuk menentukan root node, sedangkan C4.5 menggunakan nilai 
-                Gain Ratio untuk menentukan root node <sup><a href="https://journal.umy.ac.id/index.php/st/article/view/4931" class="text-decoration-none">[4]</a></sup>. 
-                Metode ensemble merupakan metode yang dipakai untuk meningkatkan 
-                performa algoritma klasifikasi dengan cara membangun beberapa model dari data train. Kemudian pada saat 
-                menentukan hasil prediksi metode ini menggunakan teknik majority vote dari classifier-classifier tersebut. 
-                Proses penggabungan hasil prediksi ini biasanya disebut dengan aggregating 
-                <sup><a href="https://ojs.unud.ac.id/index.php/lontar/article/view/32405" class="text-decoration-none">[1]</a></sup>. 
-                Contoh dari metode ensemble adalah metode Bootstrap Aggregating atau juga bisa disebut Bagging.
-            </p>
-            <p class="text-justify">Berdasarkan hasil dari penelitian sebelumnya, metode ensemble bagging terbukti mampu untuk meningkatkan performa akurasi klasifikasi.</p>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h5 class="alg-left">Permasalahan dan Solusi</h5>
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p class="text-justify text-indent">
-                Dataset Pima Indian Diabetes terdapat beberapa nilai yang kosong. 
-                Jika dibiarkan maka akan mempengaruhi kinerja dari sistem. Dataset tersebut masih bertipe data kontinu 
-                sehingga harus dilakukan diskritisasi agar data dapat digunakan dengan metode yang diusulkan. 
-                Akurasi sangat penting dalam sebuah sistem, oleh karena itu dibutuhkan sebuah metode tambahan untuk 
-                meningkatkan akurasi dari sistem yang akan dibuat. 
-            </p>
-            <p class="text-justify text-indent">
-                Solusi yang diusulkan dalam penelitian ini adalah dengan menggunakan Imputasi KNN 
-                untuk mengatasi missing value dan menggunakan diskritisasi fuzifikasi untuk mengatasi 
-                atribut kontinu serta mengkombinasikan teknik ensemble bagging dan algoritma ID3 untuk 
-                menambah akurasi sistem.
-            </p>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h5 class="alg-left">Tujuan Penelitian</h5>
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p class="text-justify text-indent">
-                Tujuan dari penelitian ini adalah :
-            </p>
-            <ol>
-                <li>Mengatasi missing value dan data kontinu pada dataset Pima Indian Diabetes.</li>
-                <li>Menambah akurasi dari algoritma klasifikasi ID3.</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h5 class="alg-left">Batasan-batasan</h5>
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p>Batasan-batasan di penelitian ini adalah :</p>
-            <ol>
-                <li>Dataset menggunakan data Pima Indian Diabetes dari UCI Repository dengan jumlah data sebanyak 768 data. (<a href="https://www.kaggle.com/uciml/pima-indians-diabetes-database">https://www.kaggle.com/uciml/pima-indians-diabetes-database</a>)</li>
-                <li>Dataset Pima Indian Diabetes memiliki 9 atribut dengan ketentuan 8 atribut sebagai atribut prediktor dan 1 sebagai atribut kelas.</li>
-                <li>Bahasa pemrograman yang digunakan adalah bahasa Python 3.10.5.</li>
-                <li>Menggunakan teknik bagging dengan algoritma ID3 sebagai pembentuk tree.</li>
-                <li>Pengujian menggunakan metode K-Fold dan pengukuran performa menggunakan Confusion Matrix.</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h5 class="alg-left">Pengertian Bagging</h5>
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p class="text-justify text-indent">
-                Bagging (bootstrap aggregatting) adalah salah satu metode ensemble yang bekerja dengan cara memanipulasi data training, 
-                data training diduplikasi sebanyak jumlah data training dengan pengembalian (sampling with replacement) 
-                sehingga menghasilkan data baru. Kemudian dari data baru tersebut digunakan untuk membangun sebuah model 
-                menggunakan algoritma tertentu <sup><a href="https://ejr.stikesmuhkudus.ac.id/index.php/BIDISFO/article/view/892" class="text-decoration-none">[5]</a></sup>. 
-            </p>
-            <p>Lebih jelasnya perhatikan skema teknik bagging pada gambar di bawah ini.</p>
-            <div class="text-center">
-                <img src="{{ url_for('static', filename='Bagging.jpg') }}" alt="akurasi" class="img-fluid">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h5 class="alg-left">Daftarr Refrensi</h5>
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <ol>
-                <li>
-                    <p><cite>M. Mirqotussa’adah, M. A. Muslim, E. Sugiharti, B. Prasetiyo, and S. Alimah, <a
-                                href="https://ojs.unud.ac.id/index.php/lontar/article/view/32405">“Penerapan Dizcretization 
-                                dan Teknik Bagging Untuk Meningkatkan Akurasi Klasifikasi Berbasis Ensemble pada Algoritma C4.5 dalam Mendiagnosa Diabetes”</a>.
-                                Lontar Komput.  J. Ilm. Teknol. Inf., vol. 8, no. 2, p. 135, 2017, doi: 10.24843/lkjiti.2017.v08.i02.p07. </cite></p>
-                </li>
-                <li>
-                    <p><cite>P. Reza, F. Ketut Queena, and U. Nengah Widya,<a
-                                href="https://ejournal.akprind.ac.id/index.php/snast/article/view/3340"> “Penerapan Algoritma ID3 Dan SVM Pada Klasifikasi Penyakit Diabetes Melitus Tipe 2”</a>.
-                                Pros. Snast, vol. 2, pp. 64–75, 2021.</cite></p>
-                </li>
-                <li>
-                    <p><cite>Susanti, M. Shantika, and S. Evy, <a
-                                href="https://jurnal.untan.ac.id/index.php/jbmstr/article/view/23498">“K Nearest Neighbor Dalam Imputasi Missing Data”,</a>.
-                                Bul. Ilm. Math. Stat. dan Ter., vol. 07, no. 1, pp. 9–14, 2018.</cite></p>
-                </li>
-                <li>
-                    <p><cite>Asroni, R. Badrahini Masajeng, and R. Slamet, <a
-                                href="https://journal.umy.ac.id/index.php/st/article/view/4931">“Penerapan Algoritma C4.5 untuk Klasifikasi Jenis Pekerjaan Alumni di Universitas Muhammadiyah Yogyakarta,”</a>.
-                                Semesta Tek., vol. 21, no. 2, pp. 158–165, 2018, doi: 10.18196/st.212222.</cite></p>
-                </li>
-                <li>
-                    <p><cite>A. Kurniawan and A. Prihandono, <a
-                                href="https://ejr.stikesmuhkudus.ac.id/index.php/BIDISFO/article/view/892">“PENERAPAN TEKNIK BAGGING UNTUK MENINGKATKAN AKURASI 
-                                KLASIFIKASI PADA ALGORITMA NAIVE BAYES DALAM MENENTUKAN BLOGGER PROFESIONAL,”</a>.
-                                vol. 1, pp. 34–40, 2020.</cite></p>
-                </li>
-            </ol>
-        </td>
-    </tr>
-</table> -->
 {% endblock %}

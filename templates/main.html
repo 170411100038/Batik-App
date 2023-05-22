@@ -5,22 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+        type='text/css'>
     <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <title>UMKM Batik</title>
 </head>
 
 <body>
     <!-- NAVIGATION BAR-->
     <header class="site-header">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-scroll shadow-0" style="background-color: #56ab91;">
+        <div class="wrapper">
+            <nav>
+                <div class="container-flex">
+                    <div class="brand">
+                        <a href="{{ url_for('index') }}">UMKM Batik</a>
+                    </div>
+                    <div class="burger">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <div class="bg-sidebar"></div>
+                    <ul class="sidebar">
+                        <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                        <li><a href="{{ url_for('praproses') }}">Praproses</a></li>
+                        <li><a href="{{ url_for('pengujian') }}">Pengujian</a></li>
+                        <li><a href="{{ url_for('evaluasi') }}">Evaluasi</a></li>
+                        <li><a href="{{ url_for('uji') }}">Uji Data</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- <nav class="navbar navbar-expand-lg fixed-top navbar-scroll shadow-0" style="background-color: #f06359;">
             <div class="container">
                 <a class="navbar-brand brand-hover px-4" href="{{ url_for('index') }}">UMKM Batik</a>
                 <button class="navbar-toggler ps-0" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarku" aria-controls="navbarku" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +75,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
     </header>
 
     <main role="main" class="container-xl">
@@ -70,13 +97,14 @@
     <!-- Remove the container if you want to extend the Footer to full width. -->
     <div class="my-5">
         <!-- Footer -->
-        <footer class="text-center text-white" style="background-color: #56ab91">
+        <footer class="text-center text-white" style="background-color: #f06359">
             <!-- Grid container -->
             <div class="container">
                 <!-- Section: Links -->
                 <section class="mt-5">
                     <!-- Grid row-->
-                    <div class="row text-center d-flex justify-content-center pt-5" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="row text-center d-flex justify-content-center pt-5" data-aos="fade-up"
+                        data-aos-duration="1000">
                         <!-- Grid column -->
                         <div class="col-md-2">
                             <h6 class="text-uppercase font-weight-bold">
@@ -97,13 +125,12 @@
                         </div>
                         <div class="col-md-2">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="{{ url_for('uji') }}"
-                                    class="text-white text-decoration-none">Uji</a>
+                                <a href="{{ url_for('evaluasi') }}" class="text-white text-decoration-none">Evaluasi</a>
                             </h6>
                         </div>
                         <div class="col-md-2">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="{{ url_for('evaluasi') }}" class="text-white text-decoration-none">Evaluasi</a>
+                                <a href="{{ url_for('uji') }}" class="text-white text-decoration-none">Uji Data</a>
                             </h6>
                         </div>
                         <!-- Grid column -->
@@ -119,7 +146,8 @@
                     <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
                         <div class="col-lg-8">
                             <p>
-                                UMKM Batik
+                                KLASIFIKASI KINERJA UMKM MENGGUNAKAN METODE DECISION TREE UNTUK PENINGKATAN
+                                PRODUKSTIVITAS BATIK MADURA
                                 <br> Dr. Yeni Kustiyahningsih, S. Kom., M. Kom
                             </p>
                             <!-- Section: Social -->
@@ -157,6 +185,25 @@
     <!-- <script>
         AOS.init();
     </script> -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
     <!-- JS for table -->
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {

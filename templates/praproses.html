@@ -7,7 +7,7 @@
     <h5>Data sebelum pra proses</h5>
     <table id="data-awal" class="table table-hover table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
-            <tr class="table-success">
+            <tr class="table-danger">
                 <th scope="col">No</th>
                 {% for i in nama_kolom %}
                     <th scope="col"> {{i}} </th>
@@ -33,7 +33,7 @@
     <h5 class="mt-5">Data setelah imputasi</h5>
     <table id="data-imputer" class="table table-hover table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
-            <tr class="table-success">
+            <tr class="table-danger">
                 <th scope="col">No</th>
                 {% for i in nama_kolom_imputasi %}
                     <th scope="col"> {{i}} </th>
@@ -59,7 +59,7 @@
     <h5 class="mt-5">Data setelah seleksi fitur</h5>
     <table id="data-diskrit" class="table table-hover table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
-            <tr class="table-success">
+            <tr class="table-danger">
                 <th scope="col">No</th>
                 {% for i in nama_kolom_seleksi %}
                     <th scope="col"> {{i}} </th>
